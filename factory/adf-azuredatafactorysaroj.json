@@ -1,0 +1,9 @@
+{
+	"name": "adf-azuredatafactorysaroj",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "9a67b649-5bcd-450a-a393-ca0c99da7405",
+		"tenantId": "790ab49e-7ec6-4e1a-bc49-2e448970da30"
+	}
+}
