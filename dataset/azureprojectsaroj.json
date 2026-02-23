@@ -1,0 +1,12 @@
+{
+	"name": "azureprojectsaroj",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "azureprojectsaroj",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}
