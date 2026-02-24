@@ -1,0 +1,84 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adf-azuredatafactorysaroj"
+		},
+		"azureprojectsaroj_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'azureprojectsaroj'"
+		},
+		"datalake_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'datalake'"
+		},
+		"azureprojectsaroj_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sarojprojectserver.database.windows.net"
+		},
+		"azureprojectsaroj_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "azureprojectdbsaroj"
+		},
+		"azureprojectsaroj_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adminsaroj"
+		},
+		"datalake_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://sarojazurestorageproject.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "adf-azuredatafactorysaroj_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"azureprojectsaroj_password": {
+						"value": "[parameters('azureprojectsaroj_password')]"
+					},
+					"datalake_accountKey": {
+						"value": "[parameters('datalake_accountKey')]"
+					},
+					"azureprojectsaroj_properties_typeProperties_server": {
+						"value": "[parameters('azureprojectsaroj_properties_typeProperties_server')]"
+					},
+					"azureprojectsaroj_properties_typeProperties_database": {
+						"value": "[parameters('azureprojectsaroj_properties_typeProperties_database')]"
+					},
+					"azureprojectsaroj_properties_typeProperties_userName": {
+						"value": "[parameters('azureprojectsaroj_properties_typeProperties_userName')]"
+					},
+					"datalake_properties_typeProperties_url": {
+						"value": "[parameters('datalake_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
